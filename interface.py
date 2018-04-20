@@ -16,10 +16,12 @@ class Application:
         self.drop_wavelet_family_text = StringVar(master)
         self.threhold_method = StringVar(master)
         self.blank_label = Label(master, text="\n")
+
     def get_image_url(self):
-        #filename = filedialog.askopenfilename()
         filename = filedialog.askopenfilename(initialdir="/", title="Select file",
-                                                     filetypes=(("jpeg files", "*.jpg"), ("png files", "*.png"), ("all files", "*.*")))
+                                              filetypes=(("jpeg files", "*.jpg"),
+                                                         ("png files", "*.png"),
+                                                         ("all files", "*.*")))
         if filename:
             self.file_path.set(str(filename))
 
