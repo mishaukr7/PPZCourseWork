@@ -30,7 +30,7 @@ def denoising_image(image, wavelet, level_of_transformation, threshold, mode_thr
 #print(image_extract_array.get_image_array_with_noise('temp.jpg', 10)[0][:20])
 # print("RESULT:")
 # print(denoising_image('temp.jpg', 'db1', 1, 5, 'soft')[0][:20])
-#main.show_image(denoising_image('images/temp.jpg', 'db1', 1, 0, 'soft'))
+main.show_image(denoising_image('images/downloaded.jpg', 'db2', 1, 10, 'soft'))
 #print(denoising_image('a713.jpg', 'db1', 2, [5, 5, 5, 5], 'soft'))
 #main.image_show_PIL(denoising_image('temp.jpg', 'db1', 2, [5, 5, 5, 5], 'soft'))
 

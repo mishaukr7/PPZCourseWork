@@ -1,6 +1,7 @@
 import scipy.io
 from numpy import *
 
+
 def get_image_array(image):
     '''
 
