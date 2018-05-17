@@ -7,7 +7,7 @@ from PIL import Image
 
 def get_image_array(image):
     #return scipy.misc.imread(image, flatten='true', mode='RGB')
-    return scipy.misc.imread(image, mode='RGB')
+    return scipy.misc.imread(image)
 #print(get_image_array('temp.jpg'))
 
 

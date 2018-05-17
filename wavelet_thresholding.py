@@ -22,6 +22,7 @@ def wavelet_thresholding(array_of_wavelet_coeff, threshold, mode_thresholding):
     :param mode_thresholding: {'soft', 'hard', 'greater', 'less'}
     :return: thresholded wavelet coefficients.
     """
+
     array_of_wavelet_coeff[0] = pywt.threshold(array_of_wavelet_coeff[0], threshold, mode=mode_thresholding)
     array_of_wavelet_coeff[1] = pywt.threshold(array_of_wavelet_coeff[1], threshold, mode=mode_thresholding)
     return array_of_wavelet_coeff

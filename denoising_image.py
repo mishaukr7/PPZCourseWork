@@ -15,8 +15,8 @@ def denoising_image(image, wavelet, level_of_transformation, threshold, mode_thr
 
     image_array = image_extract_array.get_image_array(image)
     Y = image_extract_array.transform_coefficients_from_rgb_to_yuv(image_array, 0.299, 0.587, 0.114)
-    #U = image_extract_array.transform_coefficients_from_rgb_to_yuv(image_array, 0.1678, -0.3313, 0.5)
-    #V = image_extract_array.transform_coefficients_from_rgb_to_yuv(image_array, 0.5, -0.4187, 0.0813)
+    U = image_extract_array.transform_coefficients_from_rgb_to_yuv(image_array, 0.1678, -0.3313, 0.5)
+    V = image_extract_array.transform_coefficients_from_rgb_to_yuv(image_array, 0.5, -0.4187, 0.0813)
 
     WaveletCoefficients = wavelet_thresholding.wavelet_decomposition(Y, wavelet, level_of_transformation)
     thresholded_wavelet = wavelet_thresholding.wavelet_thresholding(WaveletCoefficients, threshold, mode_thresholding)

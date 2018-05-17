@@ -85,7 +85,7 @@ class DenoisedImage(Application):
     def show_denoise_image(self):
         main.show_image(denoising_image.denoising_image(str(self.file_path.get()),
                                                         str(self.drop_wavelet_family_text.get()),
-                                                        1,
+                                                        5,
                                                         int(self.threhold.get()),
                                                         str(self.threhold_method.get())))
 

@@ -1,13 +1,13 @@
 import scipy.io
 from numpy import *
 
+
 def get_image_array(image):
     '''
-
     :param image: path to image;
     :return: list of RGB color.
     '''
-    return scipy.misc.imread(image, mode='RGB')
+    return scipy.misc.imread(image, mode='RGB').astype(float32)
 
 
 def get_image_array_with_noise(image, noiseVariance):
