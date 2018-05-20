@@ -1,14 +1,12 @@
 from numpy import *
-import scipy.io
 import pywt
 import matplotlib.pyplot as plt
-from PIL import Image
+import matplotlib.image as mpimg
+
 
 
 def get_image_array(image):
-    #return scipy.misc.imread(image, flatten='true', mode='RGB')
-    return scipy.misc.imread(image)
-#print(get_image_array('temp.jpg'))
+    return mpimg.imread(image)
 
 
 def get_image_array_with_noise(image, noiseVariance):
@@ -36,16 +34,6 @@ def show_image(image_array):
     plt.gray()
     plt.show()
 
-
-
-
-
-#denoise_array = get_denoise_image_array('temp.jpg', 'db2', 2, 15, 10, 10, 10, 'soft')[0]
-#show_image()
-#show_image(denoise_array)
-
-# plt.plot(get_denoise_image_array('temp.jpg', 'db1', 1, 10, 200, 200, 200, 'soft')[2])
-# plt.show()
-#print(get_denoise_image_array('temp.jpg', 'db1', 1, 5, 10, 10, 10, 'soft')[1][1])
-
-#print(get_image_array('temp.jpg'))
+# def show_image(image_array):
+#     img = Image.fromarray(image_array)
+#     img.show()
