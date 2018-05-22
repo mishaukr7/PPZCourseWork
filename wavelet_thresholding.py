@@ -22,7 +22,8 @@ def threshold_value(input_array, n, image):
     abs_list = [np.absolute(x-np.median(input_array)) for x in input_array]
     gamma = estimate_sigma(image, multichannel=True)
     #print(gamma)
-    return gamma[0] * math.sqrt(2*math.log(n))/2
+    #print(gamma[0]/2)
+    return gamma[0] * math.sqrt(2*math.log(n))
 
 
 def wavelet_thresholding(array_of_wavelet_coeff, image, mode_thresholding):

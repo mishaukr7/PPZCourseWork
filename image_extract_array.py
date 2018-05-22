@@ -2,6 +2,7 @@ import scipy.io
 from numpy import *
 from scipy import ndimage
 import numpy as np
+import scipy.misc as misc
 
 
 def get_image_array(image):
@@ -13,7 +14,7 @@ def get_image_array(image):
 
 
 def get_image_array_with_noise(image, noiseVariance):
-    image_with_noise = get_image_array(image) + random.normal(0, noiseVariance, size=get_image_array(image).shape)
+    image_with_noise = misc.imread(image, mode='RGB') + random.normal(0, noiseVariance, size=misc.imread(image, mode='RGB').shape)
     return image_with_noise
 
 

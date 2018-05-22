@@ -148,7 +148,7 @@ def _wavelet_threshold(image, wavelet, method=None, threshold=None,
 def denoise_wavelet(image, sigma=None, wavelet='db1', mode='soft',
                     wavelet_levels=None, multichannel=False,
                     convert2ycbcr=False, method='BayesShrink'):
-    """Perform wavelet denoising on an image.
+    """
     Parameters
     ----------
     image : ndarray ([M[, N[, ...P]][, C]) of ints, uints or floats

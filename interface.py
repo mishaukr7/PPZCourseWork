@@ -12,7 +12,7 @@ class Application:
         self.master = master
         self.file_path = StringVar(master)
 
-        master.title('Denoising image')
+        master.title('Знешумлення зображення')
         self.master.geometry('700x380')
 
         self.drop_wavelet_family_text = StringVar(master)
@@ -30,17 +30,14 @@ class Application:
 
 
 class DenoisedImage(Application):
-    wavelet_family_label_list = ['db1',
+    wavelet_family_label_list = ['haar',
                                  'db2',
                                  'db3',
+                                 'db4',
                                  'dmey',
-                                 'gaus1',
-                                 'gaus2',
-                                 'haar',
                                  'sym2',
                                  'sym3',
                                  'bior1.3',
-                                 'bior2.2'
                                  ]
 
     threhold_method_list = [
@@ -56,32 +53,33 @@ class DenoisedImage(Application):
     def __init__(self, master):
         Application.__init__(self, master)
 
-        self.top_label = Label(master, text="PROGRAM FOR DENOISING IMAGE", anchor=CENTER, font=("Arial Bold", 17))
-        self.top_label.grid(row=0, column=0, padx=(150, 0))
+        #self.top_label = Label(master, text="PROGRAM FOR DENOISING IMAGE", anchor=CENTER, font=("Arial Bold", 17))
+        self.top_label = Label(master, text="ЗНЕШУМЛЕННЯ ЦИФРОВИХ ЗОБРАЖЕНЬ", anchor=CENTER, font=("Arial Bold", 17))
+        self.top_label.grid(row=0, column=0, padx=(100, 0))
         self.blank_label = Label(master, text="\n")
         self.blank_label.grid()
 
-        self.label_wavelet_family = Label(master, text='Choose wavelet family: ', width=30, font=("Arial", 17))
+        self.label_wavelet_family = Label(master, text='Оберіть сім\'ю вейвлетів: ', width=30, font=("Arial", 17))
         self.label_wavelet_family.grid(row=2, column=0)
         self.drop_wavelet_family_text.set(self.wavelet_family_label_list[0])
         self.drop_menu = OptionMenu(master, self.drop_wavelet_family_text, *self.wavelet_family_label_list)
         self.drop_menu.configure(font=("Arial", 17))
         self.drop_menu.grid(row=2, column=1)
 
-        self.label_get_image = Label(master, text='Choose image for denoising: ', font=("Arial", 17))
+        self.label_get_image = Label(master, text='Оберіть зображення: ', font=("Arial", 17))
         self.label_get_image.grid(row=10, column=0)
-        self.get_image_button = Button(master, text='Open', command=self.get_image_url)
-        self.get_image_button.configure(font=("Arial", 17))
+        self.get_image_button = Button(master, text='Пошук', command=self.get_image_url)
+        self.get_image_button.configure(font=("Arial", 13))
         self.get_image_button.grid(row=10, column=1)
 
-        self.label_threhold_method = Label(master, text="Choose method of thresholding: ", font=("Arial", 17))
+        self.label_threhold_method = Label(master, text="Оберіть метод порогування: ", font=("Arial", 17))
         self.label_threhold_method.grid(row=8, column=0)
         self.threhold_method.set(self.threhold_method_list[0])
         self.threhold_method_option = OptionMenu(master, self.threhold_method, *self.threhold_method_list)
         self.threhold_method_option.configure(font=("Arial", 17))
         self.threhold_method_option.grid(row=8, column=1)
 
-        self.label_image_color_type = Label(master, text="Choose image color type: ", font=("Arial", 17))
+        self.label_image_color_type = Label(master, text="Оберіть кодування зображення: ", font=("Arial", 17))
         self.label_image_color_type.grid(row=4, column=0)
         self.image_color_type.set(self.color_type_list[0])
         self.color_type_option = OptionMenu(master, self.image_color_type, *self.color_type_list)
@@ -90,7 +88,7 @@ class DenoisedImage(Application):
         self.blank_label = Label(master, text="\n")
         self.blank_label.grid()
 
-        self.submit_button = Button(master, text="Submit", command=self.show_denoise_image, fg='GREEN', font=("Arial Bold", 15))
+        self.submit_button = Button(master, text="Виконати", command=self.show_denoise_image, fg='GREEN', font=("Arial Bold", 15))
         self.submit_button.grid(row=12, column=1)
 
     def show_denoise_image(self):
@@ -104,7 +102,7 @@ class DenoisedImage(Application):
             img = img_as_float(image)
             sigma_est = estimate_sigma(img, multichannel=True, average_sigmas=True)
             denoised_image = denoise_wavelet(img, multichannel=True, convert2ycbcr=True, mode=str(self.threhold_method.get()),
-                                             sigma=2 * sigma_est, wavelet=str(self.drop_wavelet_family_text.get()))
+                                             sigma=2*sigma_est, wavelet=str(self.drop_wavelet_family_text.get()))
             main.show_image(denoised_image)
 
     def __str__(self):
